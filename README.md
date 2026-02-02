@@ -20,10 +20,10 @@ The primary objective is not merely data movement, but the accurate reconstructi
 
 ```mermaid
 graph LR
-    A["Chaos Monkey\n(Python Script)"] -->|Inject JSON Events| B[("Postgres Raw\nAppend-Only")]
-    B -->|Parse & Clean| C["Staging View\n(dbt)"]
+    A["Chaos Monkey (Python Script)"] -->|Inject JSON Events| B[("Postgres Raw Append-Only")]
+    B -->|Parse & Clean| C["Staging View (dbt)"]
     C -->|Detect Changes| D{"dbt Snapshots"}
-    D -->|SCD Type 2| E["Historical Tables\n(Valid From/To)"]
+    D -->|SCD Type 2| E["Historical Tables (Valid From/To)"]
     C -->|Audit| F["Data Quality Mart"]
     E -->|Analyze| G["Price Volatility Mart"]
 ```
