@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: stg_events
+    description: "Vista limpia de eventos con validación lógica"
+    columns:
+      - name: event_id
+        description: "PK del evento"
+        tests:
+          - unique
+          - not_null
+
+      - name: price
+        description: "Precio extraído"
+        tests:
+          - not_null:
+              severity: warn  # Si es nulo, avísame 
+
+      - name: is_valid_event
+        description: "Flag de calidad"
+        tests:
+          - accepted_values:
+              values: [true]
+              severity: warn
+              # Dbt da una advertencia si llegan datos sucios

@@ -1,0 +1,7 @@
+apache-airflow-providers-postgres
+pandas
+requests
+sqlalchemy
+psycopg2-binary
+dbt-core
+dbt-postgres

@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+venv/
+.env
+
+# Docker
+.docker/
+
+# Airflow
+logs/
+airflow.cfg
+unittests.cfg
+
+# dbt
+dbt_packages/
+target/
+dbt_modules/
+
+# OS
+.DS_Store
+Thumbs.db

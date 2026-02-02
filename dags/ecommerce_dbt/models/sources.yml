@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: ecommerce_source
+    description: "Datos crudos del generador de caos"
+    database: airflow
+    schema: public
+    tables:
+      - name: raw_events
+        description: "Tabla Append-Only con JSON payload"
