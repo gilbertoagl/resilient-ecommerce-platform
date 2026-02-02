@@ -58,7 +58,7 @@ Negative Prices: Automatically detected and flagged in the Staging layer.
 
 Price Volatility: Historically captured in the products_snapshot table.
 
-![Metabase Dashboard](metadatavolatility.png)
+![Metabase Dashboard](metabasevolatility.png)
 
 
 **Tech Stack**
