@@ -35,6 +35,8 @@ Leverages Postgres JSONB to store raw events without a fixed structure.
 
 If the source API changes or transmits malformed data, the pipeline does not break; it preserves the raw event for future auditing and reprocessing.
 
+![Airflow DAG Graph](airflowgraph.png)
+
 **Data Quality Management:**
 
 Implementation of dbt tests (unique, not_null, accepted_values) to alert on data degradation.
@@ -56,6 +58,7 @@ Negative Prices: Automatically detected and flagged in the Staging layer.
 
 Price Volatility: Historically captured in the products_snapshot table.
 
+![Metabase Dashboard](metadatavolatility.png)
 
 
 **Tech Stack**
@@ -71,15 +74,19 @@ Infrastructure: Docker Compose
 
 **Execution Guide**
 1. Start Services:
+
 docker compose up --build -d
 
 2. Initialize Raw Table:
+
 docker compose exec postgres psql -U airflow -c "CREATE TABLE raw_events (event_id UUID PRIMARY KEY, event_type VARCHAR(50), event_timestamp TIMESTAMP, ingestion_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP, source VARCHAR(50), payload JSONB);"
 
 3. Generate Chaos (Simulated Events):
+
 docker compose exec airflow-scheduler python /opt/airflow/dags/scripts/chaos_generator.py
 
 4. Run Full Pipeline:
+
 docker compose exec airflow-scheduler bash -c "cd dags/ecommerce_dbt && dbt run && dbt snapshot && dbt test"
 
 **Contact https://www.linkedin.com/in/gilberto-agramont-cloud/ Data Engineer**
